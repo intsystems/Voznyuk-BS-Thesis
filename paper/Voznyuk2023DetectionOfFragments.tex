@@ -114,7 +114,7 @@ Thus, $\mathbf{T}^*$ is a set of all possible sequences of non-overlapping block
 
 We assume that in each document blocks of text with the same origin is big enough. Thus, we search for style changes on sentence levels. Style change indicates that several next sentences staring from the beginning of the style change have different origin. Each sentence receive a label $0$ or $1$, where 0 means it is a human-written sentence and 1 is a machine-generated sentence. A fragment is a sequence of neighbouring sentences of maximum possible length, that have the same label. We repeat this process for every document in given set of document. 
 
-Each document segments have to be clustered into $c$ clusters, where $c$  =  $|\textbf{C}|$. 
+We will cluster neighbouring fragments, that have got the same label and consider these fragments as one larger fragment. 
 
 \subsection{Fragment classification}
 
@@ -176,6 +176,7 @@ For tokenization of sentences in text fragments we used pretrained embedding fro
     \item Table of train accuracy and validation accuracy on each epoch
     \item Graph of validation / train loss versus epoch - Figure 1
     \item Graph of Precision-Recall Curve for every class - Figure 2
+    \item Graph of Loss on Feature Tranformation during text segmentation - Figure 3 
 \end{enumerate}
 
 % The dataset, PAN-PC-11\cite{pan-dataset} was intended to use for intrinsic plagiarism detection. We will analyse our task on sentence-level, this will be out tokens. The test collection consists of 4753 documents and is split into 10 folds. Each folds contains 500 documents except for the smaller fold 10. We used it as a benchmark for measuring, how good our model is in fragmenting a document.
