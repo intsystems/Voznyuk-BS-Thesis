@@ -73,12 +73,12 @@ pdfkeywords={Detection},
 \section{Introduction}
 
 % \cite{EVL:1}
-In recent years there has been a rapid development of language models for text generation, transformers in particular, for example GPT\cite{gpt}, GPT-2\cite{gpt2}, GPT-3\cite{gpt3}, CTRL\cite{ctrl} and mT5\cite{mt5}. Problem of detecting machine-generated text has become more relevant recently due to the released ChatGPT model by OpenAI. This model was learnt on massive amounts of data and now is able to provide texts that are hardly distinguishable from human texts. The opposite task of detecting machine-generated text becomes more important due to many possible malicious usages of this technology. One can analyse the whole text or fragments of text.
+In recent years there has been a rapid development of language models for text generation, transformers in particular, for example GPT~\cite{gpt}, GPT-2\cite{gpt2}, GPT-3~\cite{gpt3}, CTRL~\cite{ctrl} and mT5~\cite{mt5}. Problem of detecting machine-generated text has become more relevant recently due to the released ChatGPT\footnote{\url{https://openai.com/blog/chatgpt}} model by OpenAI. This model was learnt on massive amounts of data and now is able to provide texts that are hardly distinguishable from human texts. The opposite task of detecting machine-generated text becomes more important due to many possible malicious usages of this technology. One can analyse the whole text or fragments of text.
 We will focus on methods of subtracting the text-generated fragments in the set of documents.\\
-With increased computational resources past statistical methods were applied to the novel detection problem. One of them was prediction entropy as an indicator of fake text, as described in \cite{relativeentropy}. Also perplexity\cite{perplexity} of the text or frequency of rare bigrams \cite{rare_bigrams} or value of tf-idf \cite{solaiman} can be taken into account. Another approach is to use classifiers that try to label given texts \cite{Kuznetsov}.\\
-For a long period recursive neural networks like LSTM were showing best results at solving the problem of detection. At 2018 the mechanism of self-attention\cite{Vaswani} was introduced and transformers have become new state-of-the-art approach.  Every new model has its own features and is usually learnt on larger amounts of data, but attention mechanism always stays. These model can be used in detection of machine-generated text in two ways\cite{solaiman}. The first method is using a language model that searches for artefacts from  methods, which most models are using for generating concise texts \cite{gltr}. Additional training on new data is not required. The second method is fine-tuning based detection: one fine-tunes a language model to “detect itself” with using some stochastic methods, for example top-k, top-p sampling etc.\cite{gritsay2022}.
+With increased computational resources past statistical methods were applied to the novel detection problem. One of them was prediction entropy as an indicator of fake text, as described in~\cite{relativeentropy}. Also perplexity~\cite{perplexity} of the text or frequency of rare bigrams~\cite{rare_bigrams} or value of tf-idf~\cite{solaiman} can be taken into account. Another approach is to use classifiers that try to label given texts~\cite{Kuznetsov}.\\
+For a long period recursive neural networks like LSTM were showing best results at solving the problem of detection. At 2018 the mechanism of self-attention~\cite{Vaswani} was introduced and transformers have become new state-of-the-art approach.  Every new model has its own features and is usually learnt on larger amounts of data, but attention mechanism always stays. These model can be used in detection of machine-generated text in two ways~\cite{solaiman}. The first method is using a language model that searches for artefacts from  methods, which most models are using for generating concise texts~\cite{gltr}. Additional training on new data is not required. The second method is based on fine-tuning on detection task. We fine-tune a language model to “detect itself” with using some stochastic methods, for example top-k, top-p sampling~\cite{gritsay2022}.
 
-Our approach consists of two steps. The first step is to divide each document into non-overlapping blocks of sentences. We take the baseline from work\cite{Kuznetsov} on plagiarism detection.  We measure the quality of our model using metrics from text segmentation and clustering, like BCubed metric. We suppose, that within a fragment with artificial text there is a similar semantic structure.  The next step is to detect the origin of all the fragments, whether they are machine-generated text and this can be done with usage of transformer-based models, similar to \cite{gritsay2022}. This papers presents computational experiments with these models to combine them in one model and analyse the parameters on which the best performance will be obtained. Dataset will be constructed from existing datasets, such as GPT-2 output dataset\cite{gpt2-dataset} and RUaTD competition dataset\cite{ruatd-dataset}.  %%%%---!!
+Our approach consists of two steps. The first step is to divide each document into non-overlapping blocks of sentences. We take the baseline from work~\cite{Kuznetsov} on plagiarism detection.  We measure the quality of our model using metrics from text segmentation and clustering, like BCubed metric. We suppose, that within a fragment with artificial text there is a similar semantic structure.  The next step is to detect the origin of all the fragments, whether they are machine-generated text and this can be done with usage of transformer-based models, similar to \cite{gritsay2022}. This papers presents computational experiments with these models to combine them in one model and analyse the parameters on which the best performance will be obtained. Dataset will be constructed from existing datasets, such as GPT-2 output dataset~\cite{gpt2-dataset} and RUaTD competition dataset~\cite{ruatd-dataset}.  %%%%---!!
 
 \section{Problem statement}
 
@@ -86,37 +86,54 @@ Let $\mathbf{W}$ be our alphabet, tokens consists from characters from that alph
 
 Let $$\mathbb{D} = \Bigl\{\Big[t_j\Big]_{j=1}^n \Hquad|\Hquad t_j \in \mathbf{W}, n \in \mathbb{N}\Bigr\}$$ be the space of our documents.
 
-We have set of $n$ documents
-$$\mathbf{D} = \bigcup_{i=1}^{n}D^i, D^i \in \mathbb{D}$$
+We have set of $N$ documents
+$$\mathbf{D} = \bigcup_{i=1}^{N}D^i, D^i \in \mathbb{D}$$
 
 %Each document  $D^i$ consists of $d_i$ tokens $t_1^i, t_2^i, ..., t_{d_i}^i$, where $t_j^i \in \mathbf{W}$ .
 We have $K$ classes of our text-generative models, that generated fragments of text in $\mathbf{D}$.
 
-We have $K + 1$ labels, that we will use for multiclass classification, where $0$ is the label of human-written fragment, ${1...K}$ are the  labels that represent corresponding language model, let $\mathbf{C}$ be our set of labels.
+We have $K + 1$ labels, that we use for multiclass classification, where $0$ is the label of human-written fragment, $\{1...K\}$ are the  labels that represent corresponding language model, let $\mathbf{C}$ be our set of labels.
 
 Our model $\mathbf{\phi}$ is a superposition of two mappings, $\mathbf{f}$ and $\mathbf{g}$. Mapping $\mathbf{f}$ is responsible for text segmentation. Mapping $\mathbf{g}$ is responsible for classifying obtained fragments.
 
-$$\mathbf{\phi} : \mathbf{g} \circ \mathbf{f}$$
+$$\mathbf{\phi} : \mathbf{g} \circ \mathbf{f},$$
 
 
-$$\mathbf{\phi}: \mathbb{D} \rightarrow \mathbb{T} \qquad \mathbb{T} = \Bigl\{\Big[t_{s_j}, t_{f_j}, C_j\Big]_{j = 1}^{J} \Hquad|\Hquad t_{s_j} = t_{f_{j - 1}},\Hquad s_j \in \mathbb{N}_0,\Hquad f_j \in \mathbb{N}, \Hquad C_j \in \mathbf{C}\Bigr\},$$
+$$\mathbf{\phi}: \mathbb{D} \rightarrow \mathbb{T}, \qquad \mathbb{T} = \Bigl\{\Big[t_{s_j}, t_{f_j}, C_j\Big]_{j = 1}^{J} \Hquad|\Hquad t_{s_j} = t_{f_{j - 1}},\Hquad s_j \in \mathbb{N}_0,\Hquad f_j \in \mathbb{N}, \Hquad C_j \in \mathbf{C}\Bigr\},$$
 
-where $J$ - number of fragments in segmentation of the document, $t_{s_j}$ is starting index of the $j$-th fragment,  $t_{f_j}$ is finishing index of the $j$-th fragment,  $C_{j}$ is class of the $j$-th fragment.
+where $J$ is a number of fragments in segmentation of the document, $t_{s_j}$ is starting index of the $j$-th fragment,  $t_{f_j}$ is finishing index of the $j$-th fragment,  $C_{j}$ is class of the $j$-th fragment.
 
 
 
 \subsection{Text fragmentation}
 The first step is to divide our text into sequential non-overlapping fragments of different origin.
 
-$$\mathbf{f}: \mathbb{D} \rightarrow \mathbf{T}^* \qquad \mathbf{T}^* = \Bigl\{\Big[t_{s_j}, t_{f_j}\Big]_{j = 1}^{J}\quad|\quad t_{s_j} = t_{f_{j - 1}}, s_j \in \mathbb{N}_0, f_j \in \mathbb{N}\Bigr\},$$
+$$\mathbf{f}: \mathbb{D} \rightarrow \mathbf{T}^*, \qquad \mathbf{T}^* = \Bigl\{\Big[t_{s_j}, t_{f_j}\Big]_{j = 1}^{J}\quad|\quad t_{s_j} = t_{f_{j - 1}}, s_j \in \mathbb{N}_0, f_j \in \mathbb{N}\Bigr\},$$
 
-where $s_j$ - start of the $j$-th fragment and $f_j$ - end of the $j$-th fragment.
+where $s_j$ is start of the $j$-th fragment and $f_j$ is end of the $j$-th fragment.
 
 Thus, $\mathbf{T}^*$ is a set of all possible sequences of non-overlapping blocks of texts, that covers complete document.
 
-We assume that in each document blocks of text with the same origin is big enough. Thus, we search for style changes on sentence levels. Style change indicates that several next sentences staring from the beginning of the style change have different origin. Each sentence receive a label $0$ or $1$, where 0 means it is a human-written sentence and 1 is a machine-generated sentence. A fragment is a sequence of neighbouring sentences of maximum possible length, that have the same label. We repeat this process for every document in given set of document. 
+We assume that in each document blocks of text with the same origin is big enough. Thus, we search for style changes on sentence levels. Style change indicates that several next sentences staring from the beginning of the style change have different origin. Each sentence receive a label $\textbf{0}$ or $\textbf{1}$, where $\textbf{0}$ means it is a human-written sentence and $\textbf{1}$ is a machine-generated sentence in case of binary classification, and corresponding $K$ labels in case of multiclass classification. A fragment is a sequence of neighbouring sentences of maximum possible length, that have the same label. We repeat this process for every document in given set of document. 
+ 
+We extract features from sentences in the document and get feature vectors. Our goal is to cluster groups of fragments of the same author, thus we need to maximize the clusterability of the feature vectors.
+Let $(\vect{v}_i)_{i=1}^n$ be a sequence of basic feature vectors with elements from $\mathbb{R}^{n_{v}}$. We apply a transformation to these vectors to ease the process of following clustering of these vectors.
+$$T:\mathbb{R}^{n_\mathrm{v}}\rightarrow\mathbb{R}^{n_\mathrm{t}},$$
+$$T(\vect{x}) &= \textbf{\matr{W}}\vect{x},$$
+where $\textbf{\matr{W}}\in \mathbb{R}^{n_\mathrm{v}\times n_\mathrm{t}}$. 
+Let $(l_i)_{i=1}^n$ be the sequence of true author labels with elements from $\textbf{C}$. 
 
-We will cluster neighbouring fragments, that have got the same label and consider these fragments as one larger fragment. 
+To optimize the transformation $T$, we use the center loss function\cite{clf}:
+\begin{equation}
+	L_\mathrm{c} &= \sum_{c = 0}^{K + 1}\frac{1}{N_c} 
+		\sum_{i=1}^{n} \| T(\vect{v}_i)-\vect{\mu}_{c}\|^2 [l_i=c],
+\end{equation}
+
+where $N_c = \sum_{i=1}^n[l_i=c]$ is the number of sentences labeled with author $a$ and $\vect{\mu}_c$ represent the current centroid of the transformed feature vectors associated with the author label $c \in \textbf{C}$:
+\begin{equation}
+\vect{\mu}_c = \frac{1}{N_c}\sum_{i=1}^n T(\vect{v}_i)[l_i=c].
+\end{equation}	
+
 
 \subsection{Fragment classification}
 
@@ -129,19 +146,24 @@ $$Loss_{cls}(x) = \sum_{i=0}^K-p(x)\log q(x)$$
 where $p(x)$ is probability of object $x$ to be actually labelled with $i$,
 $q(x)$ is  probability of object $x$ to be labelled with $i$  in prediction.
 
-\subsection{Metrics}
+\subsection{Performance criteria}
 
 To measure how good our model is capable to divide our into fragments we will use BCubed\cite{bcubed} measurements.
 Let $S$ be our true segmentation and $\hat{S}$  is the predicted segmentation. We divide the segments from the true segmentation $S$ and the predicted segmentation $\hat{S}$ each into sets of segments $S_i$, $i\in\{1..c\}$, and $\hat{S}_j$, $j\in\{1..\hat{c}\}$, where $c$ is the true number of authors, and $\hat{c}$ the predicted number of authors. Let $l$ be a function that maps a segment to its length. If $S$ is a set of segment, $l(S) = \sum_{s \in S}l(s)$. BCubed precision of an item is the proportion of items in its cluster which have the item’s label, including itself. In our tasks item is a segment from a document, extracted by model. The overall BCubed precision is the averaged precision of all items in the distribution.  
 
- $$ P_{\mathrm{B}^3} = \sum_{i=1}^c \frac{1}{l(S_i)}\sum_{j=1}^{\hat{c}}
-	\sum_{s\in S_i}	\sum_{\hat{s}\in\hat{S}_j} l(s\cap \hat{s})^2, $$
-$$ R_{\mathrm{B}^3} = \sum_{j=1}^{\hat{c}} \frac{1}{l(\hat{S}_j)}\sum_{i=1}^{c}
-	\sum_{s\in S_i}	\sum_{\hat{s}\in\hat{S}_j} l(s\cap \hat{s})^2, $$
+
+$$ prec(S, R) = \frac{1}{|R|}\sum_{r \in R}\frac{|\bigcup_{s \in S}(s \cap r)|}{|r|},$$
+
+$$ rec(S, R) = \frac{1}{|S|}\sum_{s \in S}\frac{|\bigcup_{r \in R}(s \cap r)|}{|s|},$$
+
+%  $$ P_{\mathrm{B}^3} = \sum_{i=1}^c \frac{1}{l(S_i)}\sum_{j=1}^{\hat{c}}
+% 	\sum_{s\in S_i}	\sum_{\hat{s}\in\hat{S}_j} l(s\cap \hat{s})^2, $$
+% $$ R_{\mathrm{B}^3} = \sum_{j=1}^{\hat{c}} \frac{1}{l(\hat{S}_j)}\sum_{i=1}^{c}
+% 	\sum_{s\in S_i}	\sum_{\hat{s}\in\hat{S}_j} l(s\cap \hat{s})^2, $$
 
 Also, we would like to measure whether our model detects a segment of different origin as a whole or in several segments. Let it be a granularity\cite{granularity} of model:
 
-$$gran(S, R) = \frac{1}{|S_{R}|}\sum_{s \in S_{R}}|R_{S}|,$$
+$$ gran(S, R) = \frac{1}{|S_{R}|}\sum_{s \in S_{R}}|R_{S}|,$$
 
 where $S_{R} \subseteq S$ - cases of proved chmage of author in $R$, and $R_{S} \subseteq R$ are detections -alleged changes of author in $s$.
 
@@ -166,6 +188,8 @@ For our experiment with classification we took the data, that was collected for 
 We used only a part of dataset for the sake of decreasing the time of training. 
 
 Our pipeline for extracting segments from the document consists of tokenization of sentences, basic feature extraction, feature transofrmation and clustering. 
+
+Parameters are randomly initialized with values from a truncated normal distribution with standard deviation $0.1$. It is trained on-line (one document per optimization step) using RMSProp \citep{tielman-2012} with default parameters and learning rate $5\times 10^{-4}$.
 
 Feature extraction was conducted with a sliding window, that includes context of each token. The size of sliding window was 120 tokens. Among features, that were extracted, were stop words counts, Bag of Words, chracter tri-gram counts. After that we tranformed these features with linear layer. For optimization of this step we used RMSProp. On Figure 3 one can see the loss over sample size during training. Clustering was done with k-means.
 
@@ -225,11 +249,11 @@ We received 56$\%$ of accuracy with 3 epoch of training only using the part of t
 \end{figure}
 
 
-\begin{figure}[bhtp]
-	\includegraphics[width=\textwidth]{loss.png}
-	\caption{Graph on Loss Function}
-	\label{fig:3}
-\end{figure}
+% \begin{figure}[bhtp]
+% 	\includegraphics[width=\textwidth]{loss.png}
+% 	\caption{Graph on Loss Function}
+% 	\label{fig:3}
+% \end{figure}
 
 
 
