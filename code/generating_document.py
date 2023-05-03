@@ -9,8 +9,8 @@ import pandas as pd
 
 
 def extract_gpt_fragments():
-    x_valid = pd.read_json('small-117M-k40.valid.jsonl', lines=True)
-    print(x_valid.head())
+    # x_valid = pd.read_json('small-117M-k40.valid.jsonl', lines=True)
+    # print(x_valid.head())
     nice_fragments = []
     with open('fragments.txt', 'w') as f:
         for i in range(len(x_valid)):
