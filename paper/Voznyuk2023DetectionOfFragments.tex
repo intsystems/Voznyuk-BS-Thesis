@@ -217,13 +217,9 @@ On binary segmentation on 3000 documents we receive following metrics: precision
 
 For problem of multiclass segmentation various metrics, such as precision, recall and granularity can be viewed on Figure 3, Figure 4 and Figure 5.  On the contrary, for all possible number of authors our model showed low precision, but high recall. We received the largest recall on 5 authors equal to 0.94, then recall drops to 0.89 for 4 authors and drops again to 0.86 for 3 authors. Granularity equals to 7.5 is extremely high for dataset with 5 authors, which means it tends to extract very small segments, For 4 and 3 authors it does not change very much between each other, but 4.5 is still a large value for given metric.
 
-We received 56$\%$ of accuracy with 3 epoch of training only using the part of the dataset. It is less than the score, provided by the authors of competition, which is 59$\%$, but this difference is explained by smaller size of the dataset. Also we may suggest that due to increasing loss on validation set, our model started to overfit. Another issue with the quality of classification on some classes: for some classes there's a small recall, e.g class 6. For some classes there's both small recall and small precision, e.g class 3, class 12 and class 13. For some of class it is happened because of small amount of these classes in dataset. 
+We recieved only 20$\%$ of accuracy in task of classifying segments. We can see the decreasing loss for both train and validation at Figure 2, which means we can increase the number of epochs, because model is not saturated with training yet. 
 
-\section{Discussion}
-
-Our model performs well at task of binary classification, but there are some problems, that need to be figured out and resolved.
-
-
+Below is table with figures on train and validation loss with respect to epoch.
 \begin{table}[bhtp]
 	\centering
 	\caption{Table of train accuracy and validation accuracy on each epoch}
@@ -232,24 +228,30 @@ Our model performs well at task of binary classification, but there are some pro
 		\hline
 		Number of epoch & Train. loss & Valid.loss & Valid. accuracy \\
 		\hline
-		1 & 1.30  & 1.26 & 0.54  \\
+		1 & 2.20  & 2.20 & 0.11  \\
         \hline
-		2 & 1.07 & 1.27 & 0.56  \\
+		2 & 2.20 & 2.17 & 0.16  \\
 		\hline
-        3 & 0.86  & 1.35 & 0.56  \\
+        3 & 2.16  & 2.14 & 0.20 \\
         \hline
 	\end{tabular}
 \end{table}
+% We received only 20$\%$ of accuracy with 3 epoch. It is less than the score, provided by the authors of competition, which is 59$\%$, but this difference is explained by smaller size of the dataset. Also we may suggest that due to increasing loss on validation set, our model started to overfit. Another issue with the quality of classification on some classes: for some classes there's a small recall, e.g class 6. For some classes there's both small recall and small precision, e.g class 3, class 12 and class 13. For some of class it is happened because of small amount of these classes in dataset. 
+
+\section{Discussion}
+
+Our model performs well at task of binary classification, but there are some problems, that need to be figured out and resolved. Also the accuracy on task of classifying the fragments is very low and reasons of it still needed to be researched. 
+
 
 \begin{figure}[bhtp]
-	\includegraphics[width=\textwidth]{Unknown-2.png}
+	\includegraphics[width=\textwidth]{new_loss.png}
 	\caption{Graph of validation / train loss versus epoch}
 	\label{fig:1}
 \end{figure}
 
 
 \begin{figure}[bhtp]
-	\includegraphics[width=\textwidth]{Unknown.png}
+	\includegraphics[width=\textwidth]{new_pr.png}
 	\caption{Graph of Precision-Recall Curve for every class}
 	\label{fig:2}
 \end{figure}
