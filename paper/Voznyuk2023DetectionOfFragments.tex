@@ -217,7 +217,7 @@ On binary segmentation on 3000 documents we receive following metrics: precision
 
 For problem of multiclass segmentation various metrics, such as precision, recall and granularity can be viewed on Figure 3, Figure 4 and Figure 5.  On the contrary, for all possible number of authors our model showed low precision, but high recall. We received the largest recall on 5 authors equal to 0.94, then recall drops to 0.89 for 4 authors and drops again to 0.86 for 3 authors. Granularity equals to 7.5 is extremely high for dataset with 5 authors, which means it tends to extract very small segments, For 4 and 3 authors it does not change very much between each other, but 4.5 is still a large value for given metric.
 
-We recieved only 20$\%$ of accuracy in task of classifying segments. We can see the decreasing loss for both train and validation at Figure 2, which means we can increase the number of epochs, because model is not saturated with training yet. 
+On task of classifying segments accuracy is equal to 0.20 We can see the decreasing loss for both train and validation at Figure 2, which means we can increase the number of epochs, because model is not saturated with training yet. However, adding new epoch only increases accuracy on 0.01, and with further epochs an overfit is starting to happen. 
 
 Below is table with figures on train and validation loss with respect to epoch.
 \begin{table}[bhtp]
@@ -240,7 +240,7 @@ Below is table with figures on train and validation loss with respect to epoch.
 
 \section{Discussion}
 
-Our model performs well at task of binary classification, but there are some problems, that need to be figured out and resolved. Also the accuracy on task of classifying the fragments is very low and reasons of it still needed to be researched. 
+Our model performs well at task of binary classification, but there are some problems, that need to be figured out and resolved. Also the accuracy on task of classifying the fragments is very low and reasons of it still needed to be researched. In RUaTD competition the same pipeline recieved accuracy equal to 0.5, but on Russian texts.
 
 
 \begin{figure}[bhtp]
