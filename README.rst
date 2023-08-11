@@ -61,7 +61,7 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - Launching rockets is immensely challenging due to a convergence of factors. Designing a craft that endures extreme launch conditions demands cutting-edge engineering and materials. The propulsion system must generate sufficient thrust for escape velocity. Safety is paramount, necessitating meticulous testing and redundancy. Overcoming aerodynamic forces and managing intense heat is complex. Precise navigation amid Earth's rotation and debris is critical. Compliance with intricate regulations, substantial costs, and funding hurdles add to the complexity. Despite these obstacles, progress in technology and innovation continues to push the boundaries of space exploration.
      - -
      - -
-     * - GPT-2
+   * - GPT-2
      - The main reasons why it is so hard to launch a rocketship are because of the sheer number of satellites and rockets there are, and because of the complexity of the design and the design of the launch vehicle, and the limitations in the available range.The launch vehicle's payload is very complex and is the most complex design we've ever made. It requires the most energy and the most precision, and therefore we have to take into account the range and the speed and the speed of the launch vehicle," he said.
      - 345M
      - -
