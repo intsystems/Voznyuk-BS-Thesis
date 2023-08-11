@@ -30,9 +30,9 @@ Datasets
 
 ✅ Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
 
-✅ Millions of News Article URLs: 2.3 million URLs for news articles from the frontpage of over 950 English-language news outlets in the six month period between October 2014 and April 2015. (101MB)
+❓ Wesbury Lab Wikipedia Corpus - Snapshot of all the articles in the English part of the Wikipedia that was taken in April 2010. It was processed, as described in detail below, to remove all links and irrelevant material (navigation text, etc) The corpus is untagged, raw text. Used by Stanford NLP (1.8 GB).
 
-❓ Wesbury Lab Wikipedia Corpus 
+❓ Wikipedia Extraction (WEX): a processed dump of english language wikipedia (66 GB)
 
 Comparsion of Different Open LLM Models
 ========
