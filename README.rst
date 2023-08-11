@@ -24,11 +24,11 @@
 Datasets
 ========
 
-1. CEFR Levelled English Texts - texts of different complexity - https://www.kaggle.com/datasets/amontgomerie/cefr-levelled-english-texts
+CEFR Levelled English Texts - texts of different complexity - https://www.kaggle.com/datasets/amontgomerie/cefr-levelled-english-texts
 
-2. CLiPS Stylometry Investigation (CSI) Corpus: a yearly expanded corpus of student texts in two genres: essays and reviews. The purpose of this corpus lies primarily in stylometric research, but other applications are possible. (on request)
+CLiPS Stylometry Investigation (CSI) Corpus: a yearly expanded corpus of student texts in two genres: essays and reviews. The purpose of this corpus lies primarily in stylometric research, but other applications are possible. (on request)
 
-3. Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
+Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
 
 Comparsion of Different Open LLM Models
 ========
