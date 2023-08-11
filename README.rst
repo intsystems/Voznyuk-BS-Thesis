@@ -34,7 +34,8 @@ Datasets
 
 ❓ Wikipedia Extraction (WEX): a processed dump of english language wikipedia (66 GB)
 
-Wikipedia Dataset - Created by Facebook Research at 2016, the Wikipedia The 2016-12-21 dump of English Wikipedia., in English language. Containing 5,075,182 in SQL file format.
+
+❓ Wikipedia Dataset - Created by Facebook Research at 2016, the Wikipedia The 2016-12-21 dump of English Wikipedia., in English language. Containing 5,075,182 in SQL file format.
 
 Comparsion of Different Open LLM Models
 ========
