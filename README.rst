@@ -24,15 +24,15 @@
 Datasets
 ========
 
-✅CEFR Levelled English Texts - texts of different complexity - https://www.kaggle.com/datasets/amontgomerie/cefr-levelled-english-texts
+✅ CEFR Levelled English Texts - texts of different complexity - https://www.kaggle.com/datasets/amontgomerie/cefr-levelled-english-texts
 
-❓CLiPS Stylometry Investigation (CSI) Corpus: a yearly expanded corpus of student texts in two genres: essays and reviews. The purpose of this corpus lies primarily in stylometric research, but other applications are possible. (on request)
+❓ CLiPS Stylometry Investigation (CSI) Corpus: a yearly expanded corpus of student texts in two genres: essays and reviews. The purpose of this corpus lies primarily in stylometric research, but other applications are possible. (on request)
 
-✅Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
+✅ Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
 
-✅Millions of News Article URLs: 2.3 million URLs for news articles from the frontpage of over 950 English-language news outlets in the six month period between October 2014 and April 2015. (101MB)
+✅ Millions of News Article URLs: 2.3 million URLs for news articles from the frontpage of over 950 English-language news outlets in the six month period between October 2014 and April 2015. (101MB)
 
-❓Wesbury Lab Wikipedia Corpus 
+❓ Wesbury Lab Wikipedia Corpus 
 
 Comparsion of Different Open LLM Models
 ========
