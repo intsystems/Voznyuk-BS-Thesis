@@ -29,11 +29,13 @@ This paper considers the problem of detecting machine-generated parts of text in
 
 Comparsion of Different Open LLM Models:
 
-| LLM Name  |  Generated answer | Number of parametres  | HF Link  |
-|---|---|---|---|
-|   |   |   |   |   
-|   |   |   |   |   
-|   |   |   |   |   
+
+| LLM      | Example       | Params   | HF Link   |
+| -------- | ------------- | -------- | --------- |
+| GPT-2    | lorem Inpum   | 7B       |  HF Link  |
+| Vicuna   | lorem Inpum   | 13B      | HF Link   |
+|          |               |          |           |
+
 
 
 During development of the system code from 
