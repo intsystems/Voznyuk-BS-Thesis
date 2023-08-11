@@ -30,6 +30,7 @@ This paper considers the problem of detecting machine-generated parts of text in
 Comparsion of Different Open LLM Models
 ========
 
+The prompt is: "The main reasons why it's so hard to launch a rocketship are"
 
 
 .. list-table:: 
@@ -48,15 +49,15 @@ Comparsion of Different Open LLM Models
      - Row 2, column 2
      - Row 2, column 3
      - Row 2, column 4
-  * - Vicuna
+   * - Vicuna
      - Row 3, column 2
      - Row 3, column 3
      - Row 3, column 4
- * - Cerebras-GPT
+   * - Cerebras-GPT
      - Row 4, column 2
      - Row 4, column 3
      - Row 4, column 4
-* - OpenLLaMA
+   * - OpenLLaMA
      - Row 5, column 2
      - Row 5, column 3
      - Row 5, column 4 
