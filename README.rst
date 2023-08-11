@@ -62,7 +62,7 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - -
      - -
    * - GPT-2
-     - The main reasons why it is so hard to launch a rocketship are because of the sheer number of satellites and rockets there are, and because of the complexity of the design and the design of the launch vehicle, and the limitations in the available range.The launch vehicle's payload is very complex and is the most complex design we've ever made. It requires the most energy and the most precision, and therefore we have to take into account the range and the speed and the speed of the launch vehicle," he said.
+     - The main reasons why it is so hard to launch a rocketship are because the engines are so heavy. The engine is so heavy that when it is under a full pressure of water it will explode at about 100 knots and burn up in about 1.2 minutes, according to the International Space Station.However, it is possible to launch an Ariane 5 rocket in such a short time, said NASA spokesman Scott Wiebe. The spacecraft is equipped with a new generation of engines to support it, which could be installed in any of NASA's existing rockets.
      - 345M
      - -
 
