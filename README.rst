@@ -46,13 +46,9 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - 7B
      - `LLaMA <https://github.com/ggerganov/llama.cpp>`_
    * - Alpaca
-     - Row 2, column 2
-     - Row 2, column 3
-     - Row 2, column 4
-   * - Vicuna
-     - Row 3, column 2
-     - Row 3, column 3
-     - Row 3, column 4
+     - Rocketships are incredibly difficult to launch due to their complexity and cost, as well as the need for specialized facilities. Firstly, rockets require complex engineering in order to be able to withstand takeoff and flight conditions while also being powerful enough to reach orbit or a desired destination. Secondly, they can often cost hundreds of millions if not billions of dollars due to their complexity and number of components involved. Last but certainly not least, launching rockets requires access to specialized facilities such as spaceports which are usually limited in numbers around the world. All these factors make rocketships a challenging endeavor for any company or organization looking to reach orbit or beyond.
+     - 7B
+     - `Alpaca <https://github.com/tatsu-lab/stanford_alpaca`_
    * - Cerebras-GPT
      - The main reasons why it's so hard to launch a rocketship are the following: The rocket is too big and heavy for its own weight, which makes launching from orbit impossible (it would be very difficult).  This problem can also occur with other types of satellites such as balloons or even small drones that have been launched by humans in space before they reach their destination - this means there will always some risk involved when trying out new technologies like these on Earth; but if you're going into an area where people might not want your technology then don't do anything risky until after all launches were completed successfully!
      - 1.3B
