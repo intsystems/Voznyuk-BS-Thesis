@@ -54,9 +54,9 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - Row 3, column 3
      - Row 3, column 4
    * - Cerebras-GPT
-     - Row 4, column 2
-     - Row 4, column 3
-     - Row 4, column 4
+     - The main reasons why it's so hard to launch a rocketship are the following: The rocket is too big and heavy for its own weight, which makes launching from orbit impossible (it would be very difficult).  This problem can also occur with other types of satellites such as balloons or even small drones that have been launched by humans in space before they reach their destination - this means there will always some risk involved when trying out new technologies like these on Earth; but if you're going into an area where people might not want your technology then don't do anything risky until after all launches were completed successfully!
+     - 1.3B
+     - -
    * - OpenLLaMA
      - Row 5, column 2
      - Row 5, column 3
