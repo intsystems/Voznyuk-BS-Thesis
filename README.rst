@@ -54,9 +54,9 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - 1.3B
      - -
    * - OpenLLaMA
-     - Row 5, column 2
-     - Row 5, column 3
-     - Row 5, column 4 
+     - The main reasons why it is so hard to launch a rocketship are:\1. It’s not easy for the average person (or even an expert) to understand how rocket engines work, and what they do in spaceflight operations; 2. There aren't many people who have experience with building or operating them on Earth - which means that there isn't much of any practical knowledge about their operation available anywhere else but NASA itself! This makes things very difficult when trying to figure out exactly where something went wrong during testing at one point because you don&apos; t know if your assumptions were correct enough before starting up again after fixing whatever problem occurred last time around... Or worse yet- If someone has already tried this exact same thing multiple times without success then chances increase exponentially as more attempts occur over longer periods until eventually failure occurs due lack Of sufficient understanding between all parties involved regarding proper procedure
+     - 3B
+     - -
 
 
 During development of the system code from 
