@@ -43,8 +43,6 @@ Datasets
 
 ❓ NELA-GT-2019 Dataset - contains 1.12M news articles from 260 sources collected between January 1st 2019 and December 31st 2019. Included are source-level ground truth labels from 7 different assessment sites. , in English language. Containing 1.12M in JSON file format. https://metatext.io/datasets/nela-gt-2019
 
-❓ Open Research Corpus Dataset -  contains over 39 million published research papers in Computer Science, Neuroscience, and Biomedical., in English language. Containing 39M in JSON file format. https://metatext.io/datasets/open-research-corpus
-
 
 Comparsion of Different Open LLM Models
 ========
