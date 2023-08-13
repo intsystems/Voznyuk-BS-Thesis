@@ -28,7 +28,7 @@ Datasets
 
 ❓ CLiPS Stylometry Investigation (CSI) Corpus: a yearly expanded corpus of student texts in two genres: essays and reviews. The purpose of this corpus lies primarily in stylometric research, but other applications are possible. (on request)
 
-✅ Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
+❓ Gutenberg Standardized Corpus: Standardized Project Gutenberg Corpus, 55905 books (3GB counts + 18GB tokens)
 
 ❓ Wesbury Lab Wikipedia Corpus - Snapshot of all the articles in the English part of the Wikipedia that was taken in April 2010. It was processed, as described in detail below, to remove all links and irrelevant material (navigation text, etc) The corpus is untagged, raw text. Used by Stanford NLP (1.8 GB).
 
@@ -39,7 +39,7 @@ Datasets
 
 ❓ SFU Opinion and Comments Corpus (SOCC) Dataset https://metatext.io/datasets/sfu-opinion-and-comments-corpus-(socc)
 
-❓ All the News 2.0 Dataset -  contains 2.7 million articles from 26 different publications from January 2016 to April 1, 2020., in English language. Containing 2.7M in CSV file format. https://metatext.io/datasets/all-the-news-2.0
+✅ All the News 2.0 Dataset -  contains 2.7 million articles from 26 different publications from January 2016 to April 1, 2020., in English language. Containing 2.7M in CSV file format. https://metatext.io/datasets/all-the-news-2.0
 
 ❓ NELA-GT-2019 Dataset - contains 1.12M news articles from 260 sources collected between January 1st 2019 and December 31st 2019. Included are source-level ground truth labels from 7 different assessment sites. , in English language. Containing 1.12M in JSON file format. https://metatext.io/datasets/nela-gt-2019
 
