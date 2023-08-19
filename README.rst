@@ -83,11 +83,9 @@ The prompt is: "The main reasons why it's so hard to launch a rocketship are"
      - 345M
      - -
    * - GPT-J
-     - The main reasons why it is so hard to launch a rocketship are because the engines are so heavy. The engine is so heavy that when it is under a full pressure of water it will explode at about 100 knots and burn up in about 1.2 minutes, according to the International Space Station.However, it is possible to launch an Ariane 5 rocket in such a short time, said NASA spokesman Scott Wiebe. The spacecraft is equipped with a new generation of engines to support it, which could be installed in any of NASA's existing rockets.
+     - The rocket has no engine, only fins and wings that can be used for steering purposes but not thrusting (like in airplanes).  So you need some kind of propulsion system which will provide both lift AND forward motion at once! This means your vehicle needs two engines or thrusters - one providing vertical force/lift like with conventional aircrafts while another provides horizontal movement as well by using its own propellant(rocket fuel) instead from external sources such us jet-fuel etc...
      - 6B
      - -
-The rocket has no engine, only fins and wings that can be used for steering purposes but not thrusting (like in airplanes).  So you need some kind of propulsion system which will provide both lift AND forward motion at once! This means your vehicle needs two engines or thrusters - one providing vertical force/lift like with conventional aircrafts while another provides horizontal movement as well by using its own propellant(rocket fuel) instead from external sources such us jet-fuel etc...
-
 
 
 During development of the system code from 
