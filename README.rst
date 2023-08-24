@@ -96,6 +96,8 @@ There is a ridge at the western edge of the floor that is concentric with the in
 In To A Rocky Moon, lunar geologist Don E. Wilhelms summarized: They are identical twins in morphology and size (29-30 km).  They lack radial rim ejecta and secondary craters despite their apparent youth.  They are positioned at the presumably active edge of a mare.  They are even aligned along graben, the Hypatia rilles.  Most significant, they lack deep floors recognized since the days of Gilbert as diagnostic of impacts.  However, **after the Apollo landings were complete, it was realized that" the absence of impact-shaped features was an artifact of sampling bias: their rays reach up to 35 km from each crater and would have been sampled by the lunar orbiters. These craters are now thought to be volcanic in origin, as evidenced by their proximity to the Rimae Hypatia. The most probable scenario is that they were created by a fissure eruption of lava with high viscosity which then cooled rapidly and was thus hardened before it could drain away from the crater walls.↑ Wilhelms, Don E. (April 1987). To A Rocky Moon: A History of Lunar Exploration. University of Arizona Press. ISBN 0-8165-1121-4.**
 
 
+Notes
+========
 
 During development of the system code from 
 `this repository <https://github.com/Coolcumber/inpladesys>`_ was used
