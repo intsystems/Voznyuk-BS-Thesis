@@ -4,11 +4,11 @@
 
 2. Если установлен Cmake выполнить скрипт install.sh
 
-  2a. Если нет CMake, то можно попробовать просто запустить `make`, как написано [тут](https://github.com/ggerganov/llama.cpp#build)
+   2a. Если нет CMake, то можно попробовать просто запустить `make`, как написано [тут](https://github.com/ggerganov/llama.cpp#build)
   
-4. Запустить скрипт для конвертации весов convert_weights.sh
+3. Запустить скрипт для конвертации весов convert_weights.sh
 
-5. Из llama.cpp (корневой папки) запустить основную команду
+4. Из llama.cpp (корневой папки) запустить основную команду
    `make -j & ./main -m ./models/7B/ggml-model-f16.gguf -p "Building a website is not hard because" -n 500 -с 1000`
 
    Если медленно работает, можно попробовать запустить quantized версию 
