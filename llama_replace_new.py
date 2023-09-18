@@ -2,6 +2,7 @@ import re
 import random
 import subprocess
 import string
+import os
 import pandas as pd
 import nltk
 
@@ -24,7 +25,7 @@ def preprocess(article):
     # delete urls
     url_pattern = re.compile(
         r"(https?:\/\/)(\s)*(www\.)?(\s)*((\w|\s)+\.)*([\w\-\s]+\/)*([\w\-]+)((\?)?[\w\s]*=\s*[\w\%&]*)*")
-    article = re.sub(url_pattern, '', article)
+    article = re.sub(url_pattern, '', str(article))
 
     # reorder paragraphs
     paragraphs = article.split('\n')
@@ -176,17 +177,18 @@ def process_article(article, article_num, number_to_replace):
             file.write(text)
             file.write("\n")
 
-        # for i in range(len(prompt_templates)):
-
 # nltk.download('punkt')
-#
 dataset = pd.read_csv('medium.csv')
 
+try:
+    os.mkdir("documents_new")
+except FileExistsError:
+    pass
 
-# for article, number in enumerate(dataset[0][210:1328]):
-#     process_article(article, number, 2)
-# for article, number in enumerate(dataset[0][1328:2656]):
+for number, article in enumerate(dataset['0'][210:1328]):
+    process_article(article, number, 2)
+
+# for number, article in enumerate(dataset['0'][1328:2656]):
 #     process_article(article, number, 3)
-# for article, number in enumerate(dataset[0][2656:]):
+# for number, article in enumerate(dataset['0'][2656:]):
 #     process_article(article, number, 4)
-
