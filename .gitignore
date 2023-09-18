@@ -118,5 +118,4 @@ logs/
 */.*
 .*
 */mnist
-*.csv
 !.dvc
