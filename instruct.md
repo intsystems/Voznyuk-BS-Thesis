@@ -15,3 +15,4 @@
    `make -j & ./main -m ./models/7B/ggml-model-q4_0.gguf -p "Building a website is not hard because" -n 500 -с 1000` 
 
 
+5. Запустить [cкрипт](https://github.com/intsystems/2023-Project-126/blob/master/llama_replace_new.py)
