@@ -14,6 +14,10 @@
    Если медленно работает, можно попробовать запустить quantized версию 
    `make -j & ./main -m ./models/7B/ggml-model-q4_0.gguf -p "Building a website is not hard because" -n 500 -с 1000` 
 
-5. Скачать датасет medium.csv (
+Для генерации документов:
 
-5. Запустить [cкрипт](https://github.com/intsystems/2023-Project-126/blob/master/llama_replace_new.py). Там в конце закомментированы три типа генерации (когда генерируется два параграфа, три и четыре, примерно одинаковые доли текстов)
+1. Скачать датасет medium.csv [отсюда](https://github.com/intsystems/2023-Project-126/blob/master/medium.csv)
+
+2. Запустить [cкрипт](https://github.com/intsystems/2023-Project-126/blob/master/llama_replace_new.py). Там в конце закомментированы три типа генерации (когда генерируется два параграфа, три и четыре, примерно одинаковые доли текстов)
+
+`python3 llama_replace_new.py`
