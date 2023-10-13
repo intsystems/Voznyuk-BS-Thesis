@@ -185,10 +185,9 @@ try:
 except FileExistsError:
     pass
 
-for number, article in enumerate(dataset['0'][210:1328]):
+for number, article in enumerate(dataset['0'][450:1328]):
     process_article(article, number, 2)
-
-# for number, article in enumerate(dataset['0'][1328:2656]):
-#     process_article(article, number, 3)
-# for number, article in enumerate(dataset['0'][2656:]):
-#     process_article(article, number, 4)
+for number, article in enumerate(dataset['0'][1328:2656]):
+    process_article(article, number, 3)
+for number, article in enumerate(dataset['0'][2656:5000]):
+    process_article(article, number, 4)
