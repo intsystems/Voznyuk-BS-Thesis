@@ -21,3 +21,7 @@
 2. Запустить [cкрипт](https://github.com/intsystems/2023-Project-126/blob/master/llama_replace_new.py). Там в конце закомментированы три типа генерации (когда генерируется два параграфа, три и четыре, примерно одинаковые доли текстов)
 
 `python3 llama_replace_new.py`
+
+
+
+https://github.com/lperezmo/clblast-llama-cpp-python
