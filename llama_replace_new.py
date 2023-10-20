@@ -1,10 +1,13 @@
 import re
 import random
 import subprocess
+from subprocess import PIPE, Popen
 import string
 import os
 import pandas as pd
 import nltk
+from tqdm.auto import tqdm
+
 
 def create_prompt(list_of_paragraphs, list_of_picks):
     list_of_templates = []
@@ -20,6 +23,7 @@ def remove_non_ascii(a_str):
     return ''.join(
         filter(lambda x: x in ascii_chars, a_str)
     )
+
 
 def preprocess(article):
     # delete urls
@@ -84,7 +88,10 @@ def postprocess(llama_ans):
             return postprocessed
     return cut_paragraph(llama_ans)
 
+
 punkt = re.compile('([.?!]\s*)')
+
+
 def cut_paragraph(paragraph):
     sentences = re.split(punkt, paragraph)
     cur_paragraph = ""
@@ -105,47 +112,34 @@ def cut_paragraph(paragraph):
     return cur_paragraph
 
 
-terminal_template = "./main -m ./models/7B/ggml-model-q4_0.bin -c 1000 --simple-io --repeat-penalty 1.5 --n-predict 1000 -p"
+command = "/workspace/cloud/llama.cpp/build/bin/main -m /workspace/local/LLaMA/7B/ggml-model-f16.gguf -n 512 -c 1024 -ngl 35 -t 24 --log-disable --simple-io --repeat-penalty 1.5 -p"
 
 
 def call_llama(prompt_templates):
     llama_answers = []
     for prompt in prompt_templates:
-        prompt_len = len(prompt)
-        # returns output as byte string
-        cmd = f'{terminal_template}  "{prompt}"'
         returned_output = ""
 
-        # using decode() function to convert byte string to string
         idx = 0
-        while returned_output == "" and idx < 5:
+        while (len(returned_output) - len(prompt) < 400 or "SEGV" in returned_output) and idx < 5:
             try:
-                returned_output = subprocess.check_output(cmd)
-            except subprocess.CalledProcessError as e:
-                print(e.output)
+                process = Popen(command.split() + [prompt], stdout=PIPE, stderr=PIPE)
+                returned_output = process.stdout.read().decode('utf-8', errors='ignore')
+            except Exception as e:
+                print(e)
                 idx += 1
-                continue
+
         if returned_output == "":
             return []
-        llama_answer = returned_output.decode('utf-8', errors='ignore')
-        length = len(llama_answer) - prompt_len
-        while "SEGV" in llama_answer or length < 400:
-            try:
-                returned_output = subprocess.check_output(cmd)
-            except subprocess.CalledProcessError as e:
-                print(e.output)
-                continue
-            llama_answer = returned_output.decode('utf-8', errors='ignore')
-            length = len(llama_answer) - len(prompt)
-        length = len(llama_answer) - prompt_len
-        llama_answers.append(llama_answer[prompt_len - 1:])
+
+        llama_answers.append(returned_output[len(prompt) - 1:])
 
     return llama_answers
 
 
 def check_for_correctness(paragraph, number):
     if paragraph == "":
-        with open(r"documents_new\ailed.txt", 'a') as file2:
+        with open(os.path.join('documents_new', 'failed.txt'), 'a') as file2:
             file2.write(str(number))
             file2.write("\n")
         return False
@@ -155,19 +149,19 @@ def check_for_correctness(paragraph, number):
 def process_article(article, article_num, number_to_replace):
     list_of_paragraphs = preprocess(article)
     list_of_picks = pick_paragraphs_to_be_replaced(len(list_of_paragraphs), number_to_replace)
-    if (list_of_picks == []):
+    if not list_of_picks:
         check_for_correctness("", article_num)
-        return
+        return False
     prompt_templates = create_prompt(list_of_paragraphs, list_of_picks)
     llama_answers = call_llama(prompt_templates)
-    if llama_answers == []:
+    if not llama_answers:
         check_for_correctness("", article_num)
-        return
+        return False
     idx = 0
-    with open(f"documents_new\picks_{article_num}_1.txt", 'w', encoding='utf-8') as file:
+    with open(os.path.join('documents_new', f"picks_{article_num}_1.txt"), 'w', encoding='utf-8') as file:
         for i in list_of_picks:
             file.write(f"{i} ")
-    with open(f"documents_new\output_{article_num}_1.txt", 'w', encoding='utf-8') as file:
+    with open(os.path.join('documents_new', f"output_{article_num}_1.txt"), 'w', encoding='utf-8') as file:
         for j in range(len(list_of_paragraphs)):
             if j in list_of_picks:
                 text = postprocess(llama_answers[idx])
@@ -176,8 +170,9 @@ def process_article(article, article_num, number_to_replace):
                 text = postprocess(list_of_paragraphs[j])
             file.write(text)
             file.write("\n")
+    return True
 
-# nltk.download('punkt')
+
 dataset = pd.read_csv('medium.csv')
 
 try:
@@ -185,10 +180,59 @@ try:
 except FileExistsError:
     pass
 
-for number, article in enumerate(dataset['0'][210:1328]):
-    process_article(article, number, 2)
-
-# for number, article in enumerate(dataset['0'][1328:2656]):
+# start = 0
+# for number, article in enumerate(tqdm(dataset['0'][start:1328])):
+#     process_article(article, number, 2)
+# start = 1328
+# for number, article in enumerate(tqdm(dataset['0'][start:2656])):
 #     process_article(article, number, 3)
-# for number, article in enumerate(dataset['0'][2656:]):
+# start = 2656
+# for number, article in enumerate(tqdm(dataset['0'][start:5000])):
 #     process_article(article, number, 4)
+
+start = 5000
+number_of_2_paragraph_articles = 1324
+number_of_3_paragraph_articles = 1297
+number_of_4_paragraph_articles = 272
+for number, article in enumerate(tqdm(dataset['0'][start:15000])):
+    list_of_paragraphs = preprocess(article)
+    cnt_of_paragraphs = len(list_of_paragraphs)
+    if cnt_of_paragraphs >= 6 and number_of_4_paragraph_articles < 2000:
+        is_success = process_article(article, number, 4)
+        if not is_success:
+            continue
+        number_of_4_paragraph_articles += 1
+
+        with open('4_paragraphs.txt', 'a') as file:
+            file.write(str(number))
+            file.write("\n")
+            file.flush()
+
+    elif cnt_of_paragraphs >= 5 and number_of_3_paragraph_articles < 4500:
+        is_success = process_article(article, number, 3)
+        if not is_success:
+            continue
+        number_of_3_paragraph_articles += 1
+
+        with open('3_paragraphs.txt', 'a') as file:
+            file.write(str(number))
+            file.write("\n")
+            file.flush()
+
+    elif cnt_of_paragraphs >= 4 and number_of_2_paragraph_articles < 3500:
+        is_success = process_article(article, number, 2)
+        if not is_success:
+            continue
+        number_of_2_paragraph_articles += 1
+
+        with open('2_paragraphs.txt', 'a') as file:
+            file.write(str(number))
+            file.write("\n")
+            file.flush()
+    elif number_of_4_paragraph_articles >= 2000 and \
+            number_of_3_paragraph_articles >= 4500 and\
+            number_of_2_paragraph_articles >= 3500:
+        print("Success!")
+        break
+    else:
+        continue
