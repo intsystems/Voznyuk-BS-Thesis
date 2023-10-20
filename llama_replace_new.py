@@ -194,6 +194,7 @@ start = 5000
 number_of_2_paragraph_articles = 1324
 number_of_3_paragraph_articles = 1297
 number_of_4_paragraph_articles = 272
+
 for number, article in enumerate(tqdm(dataset['0'][start:15000])):
     list_of_paragraphs = preprocess(article)
     cnt_of_paragraphs = len(list_of_paragraphs)
