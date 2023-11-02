@@ -199,7 +199,7 @@ for number, article in enumerate(tqdm(dataset['0'][start:15000])):
     list_of_paragraphs = preprocess(article)
     cnt_of_paragraphs = len(list_of_paragraphs)
     if cnt_of_paragraphs >= 6 and number_of_4_paragraph_articles < 2000:
-        is_success = process_article(article, number, 4)
+        is_success = process_article(article, start+number, 4)
         if not is_success:
             continue
         number_of_4_paragraph_articles += 1
@@ -210,7 +210,7 @@ for number, article in enumerate(tqdm(dataset['0'][start:15000])):
             file.flush()
 
     elif cnt_of_paragraphs >= 5 and number_of_3_paragraph_articles < 4500:
-        is_success = process_article(article, number, 3)
+        is_success = process_article(article, start+number, 3)
         if not is_success:
             continue
         number_of_3_paragraph_articles += 1
@@ -221,7 +221,7 @@ for number, article in enumerate(tqdm(dataset['0'][start:15000])):
             file.flush()
 
     elif cnt_of_paragraphs >= 4 and number_of_2_paragraph_articles < 3500:
-        is_success = process_article(article, number, 2)
+        is_success = process_article(article, start+number, 2)
         if not is_success:
             continue
         number_of_2_paragraph_articles += 1
