@@ -23,8 +23,9 @@
 Baseline Experiment:
 ========
 
-Assuming each parsgrsph has only author we can try to represent paragrpahs. Fine-tuned RoBERTa for classification of paragraphs then use embedders for [CLS] token to cluster vector respresentations of paragraphs
-`Code <https://github.com/intsystems/2023-Project-126/blob/master/code/fine_tuning_vectorizers_paragraph_level.ipynb>`_
+Assuming each parsgrsph has only author we can try to represent paragrpahs. Fine-tuned RoBERTa for classification of paragraphs then use embedders for [CLS] token to cluster vector respresentations of paragraphs.
+
+`Link to code: <https://github.com/intsystems/2023-Project-126/blob/master/code/fine_tuning_vectorizers_paragraph_level.ipynb>`_
 
 
 Datasets
