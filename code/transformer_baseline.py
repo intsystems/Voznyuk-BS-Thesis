@@ -201,6 +201,7 @@ def get_start_position(sequence, mapping=None, token_level=True):
     return value
 
 
+
 def evaluate_machine_start_position(
     labels, predictions, idx2word=None, token_level=False
 ):
@@ -216,6 +217,8 @@ def evaluate_machine_start_position(
     Returns:
     - float: Mean absolute difference between the start positions in predictions and actual labels.
     """
+    print(-np.sort(-predictions)[:, :5])
+    print(np.argsort(-predictions)[:, :5])
     predicted_positions = predictions.argmax(axis=-1)
 
     actual_starts = []
@@ -261,129 +264,153 @@ def compute_metrics(p):
 
 
 if __name__ == "__main__":
-    model_path = "microsoft/deberta-v3-small"
+    torch.cuda.empty_cache()
+    parser = transformers.HfArgumentParser(
+        (ModelConfig, DatasetConfig, TrainingArgsConfig)
+    )
+    model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+    print("Model Arguments: ", model_args)
+    print("Data Arguments: ", data_args)
+    print("Training Arguments: ", training_args)
+
+    # Set seed
+    transformers.set_seed(training_args.seed)
+    max_length = data_args.max_length
+    run_name = training_args.run_name
+    model_path = model_args.model_path
+    tokenizer_path = model_path
+    if (
+        training_args.do_eval or training_args.do_predict
+    ) and not training_args.do_train:
+        output_dir = training_args.output_dir
+        if not os.path.exists(output_dir):
+            raise ValueError(
+                f"Output directory ({output_dir}) does not exist. Please train the model first."
+            )
+
+        # Find the best model checkpoint
+        ckpt_paths = sorted(
+            glob.glob(os.path.join(output_dir, "checkpoint-*")),
+            key=lambda x: int(x.split("-")[-1]),
+        )
+        #print(ckpt_paths)
+        if not ckpt_paths:
+            raise ValueError(
+                f"Output directory ({output_dir}) does not contain any checkpoint. Please train the model first."
+            )
+
+        state = TrainerState.load_from_json(
+            os.path.join(ckpt_paths[-1], "trainer_state.json")
+        )
+        best_model_path = state.best_model_checkpoint or model_args.model_path
+        if state.best_model_checkpoint is None:
+            logger.info(
+                "No best model checkpoint found. Using the default model checkpoint."
+            )
+        print(f"Best model path: {best_model_path}")
+        model_path = best_model_path
+
+    # 4. Load model
     model = AutoModelForTokenClassification.from_pretrained(
         model_path, num_labels=2, trust_remote_code=True
+    ).to(device)
+
+    train_set = Semeval_Data(data_args.train_file, tokenizer_path, max_length)
+    dev_set = Semeval_Data(data_args.dev_file, tokenizer_path,  max_length)
+    test_eval_set = Semeval_Data(data_args.gold_test_file,tokenizer_path, max_length)
+    trainer = transformers.Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_set,
+        #eval_dataset={"test":test_eval_set,"dev":dev_set},
+        eval_dataset=dev_set,
+        tokenizer=train_set.tokenizer,
+        compute_metrics=compute_metrics,
+        callbacks = [EarlyStoppingCallback(early_stopping_patience=10)]
     )
-    print(model.num_parameters())
-    # parser = transformers.HfArgumentParser(
-    #     (ModelConfig, DatasetConfig, TrainingArgsConfig)
-    # )
-    # model_args, data_args, training_args = parser.parse_args_into_dataclasses()
-    # print("Model Arguments: ", model_args)
-    # print("Data Arguments: ", data_args)
-    # print("Training Arguments: ", training_args)
-    #
-    # # Set seed
-    # transformers.set_seed(training_args.seed)
-    #
-    # model_path = model_args.model_path
-    # if (
-    #     training_args.do_eval or training_args.do_predict
-    # ) and not training_args.do_train:
-    #     output_dir = training_args.output_dir
-    #     if not os.path.exists(output_dir):
-    #         raise ValueError(
-    #             f"Output directory ({output_dir}) does not exist. Please train the model first."
-    #         )
-    #
-    #     # Find the best model checkpoint
-    #     ckpt_paths = sorted(
-    #         glob.glob(os.path.join(output_dir, "checkpoint-*")),
-    #         key=lambda x: int(x.split("-")[-1]),
-    #     )
-    #
-    #     if not ckpt_paths:
-    #         raise ValueError(
-    #             f"Output directory ({output_dir}) does not contain any checkpoint. Please train the model first."
-    #         )
-    #
-    #     state = TrainerState.load_from_json(
-    #         os.path.join(ckpt_paths[-1], "trainer_state.json")
-    #     )
-    #     best_model_path = state.best_model_checkpoint or model_args.model_path
-    #     if state.best_model_checkpoint is None:
-    #         logger.info(
-    #             "No best model checkpoint found. Using the default model checkpoint."
-    #         )
-    #     print(f"Best model path: {best_model_path}")
-    #     model_path = best_model_path
-    #
-    # # 4. Load model
-    # model = AutoModelForTokenClassification.from_pretrained(
-    #     model_path, num_labels=2, trust_remote_code=True
-    # )
-    #
-    # train_set = Semeval_Data(data_args.train_file)
-    # dev_set = Semeval_Data(data_args.dev_file)
-    #
-    # trainer = transformers.Trainer(
-    #     model=model,
-    #     args=training_args,
-    #     train_dataset=train_set,
-    #     eval_dataset=dev_set,
-    #     tokenizer=train_set.tokenizer,
-    #     compute_metrics=compute_metrics,
-    # )
-    #
-    # if training_args.do_train:
-    #     logger.info("Training...")
-    #     logger.info("*** Train Dataset ***")
-    #     logger.info(f"Number of samples: {len(train_set)}")
-    #     logger.info("*** Dev Dataset ***")
-    #     logger.info(f"Number of samples: {len(dev_set)}")
-    #
-    #     trainer.train()
-    #
-    #     logger.info("Training completed!")
-    #
-    # if training_args.do_eval:
-    #     logger.info("Evaluating...")
-    #     logger.info("*** Dev Dataset ***")
-    #     logger.info(f"Number of samples: {len(dev_set)}")
-    #
-    #     metrics = trainer.evaluate()
-    #     logger.info(f"Metrics: {metrics}")
-    #     trainer.save_metrics("eval", metrics)
-    #
-    #     logger.info("Evaluation completed!")
-    #
-    # if training_args.do_predict:
-    #     test_sets = []
-    #     for test_file in data_args.test_files:
-    #         test_set = Semeval_Data(test_file, inference=True)
-    #         test_sets.append(test_set)
-    #     logger.info("Predicting...")
-    #     logger.info("*** Test Datasets ***")
-    #     logger.info(f"Number of samples: {len(test_sets)}")
-    #
-    #     for idx, test_set in enumerate(test_sets):
-    #         logger.info(f"Test Dataset {idx + 1}")
-    #         logger.info(f"Number of samples: {len(test_set)}")
-    #
-    #         predictions, _, _ = trainer.predict(test_set)
-    #         logger.info("Predictions completed!")
-    #
-    #         df = pd.DataFrame(
-    #             {
-    #                 "id": [i["id"] for i in test_set],
-    #                 "label": [
-    #                     get_start_position(
-    #                         i[0],
-    #                         np.array(i[1]["corresponding_word"]),
-    #                         token_level=False,
-    #                     )
-    #                     for i in list(zip(predictions.argmax(axis=-1), test_set))
-    #                 ],
-    #             }
-    #         )
-    #         import os
-    #
-    #         file_name = os.path.basename(data_args.test_files[idx])
-    #         file_dirs = os.path.join(training_args.output_dir, "predictions")
-    #         os.makedirs(file_dirs, exist_ok=True)
-    #         file_path = os.path.join(file_dirs, file_name)
-    #         records = df.to_dict("records")
-    #         with open(file_path, "w") as f:
-    #             for record in records:
-    #                 f.write(json.dumps(record) + "\n")
+    #model = torch.nn.DataParallel(trainer, device_ids=[0,1]).cuda()
+    if training_args.do_train:
+        assert wandb.run is None
+        wandb.init(
+            project="semeval",
+
+        )
+        assert wandb.run is not None
+        logger.info("Training...")
+        logger.info("*** Train Dataset ***")
+        logger.info(f"Number of samples: {len(train_set)}")
+        logger.info("*** Dev Dataset ***")
+        logger.info(f"Number of samples: {len(dev_set)}")
+
+        trainer.train()
+        #import gc
+
+        #gc.collect()
+
+        #torch.cuda.empty_cache()
+        logger.info("Training completed!")
+        #with open('training_args.output_dir}/train_args.txt', 'w') as f:
+        #f.write(training_args)
+    if training_args.do_eval:
+        logger.info("Evaluating...")
+        logger.info("*** Dev Dataset ***")
+        logger.info(f"Number of samples: {len(dev_set)}")
+
+        metrics = trainer.evaluate(dev_set)
+        logger.info(f"Metrics: {metrics}")
+        trainer.save_metrics("eval", metrics)
+
+        logger.info("Evaluation completed!")
+
+    if training_args.do_predict:
+        test_sets = []
+        for test_file in data_args.test_files:
+            test_set = Semeval_Data(test_file,tokenizer_path, max_length, inference=True)
+            test_sets.append(test_set)
+        gold_test_file = data_args.gold_test_file
+        golden_test_set = Semeval_Data(gold_test_file, tokenizer_path, max_length, inference=False)
+
+        logger.info("Predicting...")
+        logger.info("*** Test Datasets ***")
+        logger.info(f"Number of samples: {len(test_sets)}")
+
+        for idx, test_set in enumerate(test_sets):
+            logger.info(f"Test Dataset {idx + 1}")
+            logger.info(f"Number of samples: {len(test_set)}")
+
+            predictions, _, _ = trainer.predict(test_set)
+            #print(predictions[0])
+            #metrics = compute_metrics((predictions, np.array(golden_test_set.data)))
+            #print("MAE:", metrics)
+            #wandb.log({"MAE": metrics})
+            logger.info("Predictions completed!")
+
+
+            df = pd.DataFrame(
+                {
+                    "id": [i["id"] for i in test_set],
+                    "label": [
+                        get_start_position(
+                            i[0],
+                            np.array(i[1]["corresponding_word"]),
+                            token_level=False,
+                        )
+                        for i in list(zip(predictions.argmax(axis=-1), test_set))
+                    ],
+                }
+            )
+
+
+            #wandb.log({"MAE": metrics})
+
+
+            import os
+
+            file_name = os.path.basename(data_args.test_files[idx])
+            file_dirs = os.path.join(training_args.output_dir, "predictions")
+            os.makedirs(file_dirs, exist_ok=True)
+            file_path = os.path.join(file_dirs, file_name)
+            records = df.to_dict("records")
+            with open(file_path, "w") as f:
+                for record in records:
+                    f.write(json.dumps(record) + "\n")
