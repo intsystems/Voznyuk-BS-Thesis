@@ -19,6 +19,13 @@
     :Тип научной работы: M1P
     :Автор: Анастасия Вознюк
     :Научный руководитель: к.ф.-м.н. Грабовой Андрей
+    
+Baseline Experiment:
+========
+
+Assuming each parsgrsph has only author we can try to represent paragrpahs. For that we fine-tuned RoBERTa for classification of paragraphs then used embedders for [CLS] token to cluster vector respresentations of paragraphs.
+
+`Link to code <https://github.com/intsystems/2023-Project-126/blob/master/code/fine_tuning_vectorizers_paragraph_level.ipynb>`_
 
 
 Datasets
