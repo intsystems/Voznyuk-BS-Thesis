@@ -6,3 +6,5 @@
     :Автор: Анастасия Вознюк
     :Научный руководитель: к.ф.-м.н. Грабовой Андрей
 
+
+Code: https://github.com/natriistorm/semeval2024-boundary-detection
