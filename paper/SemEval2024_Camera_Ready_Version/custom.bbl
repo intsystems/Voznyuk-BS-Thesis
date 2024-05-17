@@ -1,0 +1,162 @@
+\begin{thebibliography}{34}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Beltagy et~al.(2020)Beltagy, Peters, and Cohan}]{longformer}
+Iz~Beltagy, Matthew~E. Peters, and Arman Cohan. 2020.
+\newblock \href {http://arxiv.org/abs/2004.05150} {Longformer: The long-document transformer}.
+
+\bibitem[{Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal, Neelakantan, Shyam, Sastry, Askell, Agarwal, Herbert-Voss, Krueger, Henighan, Child, Ramesh, Ziegler, Wu, Winter, Hesse, Chen, Sigler, Litwin, Gray, Chess, Clark, Berner, McCandlish, Radford, Sutskever, and Amodei}]{gpt3}
+Tom~B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel~M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. 2020.
+\newblock Language models are few-shot learners.
+\newblock In \emph{Proceedings of the 34th International Conference on Neural Information Processing Systems}, NIPS'20, Red Hook, NY, USA. Curran Associates Inc.
+
+\bibitem[{Burtsev et~al.(2018)Burtsev, Seliverstov, Airapetyan, Arkhipov, Baymurzina, Bushkov, Gureenkova, Khakhulin, Kuratov, Kuznetsov, and Konovalov}]{burtsev2018deeppavlov}
+Mikhail Burtsev, Alexander Seliverstov, Rafael Airapetyan, Mikhail Arkhipov, Dilyara Baymurzina, Nickolay Bushkov, Olga Gureenkova, Taras Khakhulin, Yuri Kuratov, Denis Kuznetsov, and Vasily Konovalov. 2018.
+\newblock \href {https://openreview.net/pdf?id=BJzyCF6Vn7} {Deeppavlov: An open source library for conversational ai}.
+\newblock In \emph{NIPS}.
+
+\bibitem[{Chizhikova et~al.(2023)Chizhikova, Konovalov, and Burtsev}]{chizhikova2022multilingual}
+Anastasia Chizhikova, Vasily Konovalov, and Mikhail Burtsev. 2023.
+\newblock \href {https://doi.org/10.1007/978-3-031-19032-2_46} {Multilingual case-insensitive named entity recognition}.
+\newblock In \emph{Advances in Neural Computation, Machine Learning, and Cognitive Research VI}, pages 448--454, Cham. Springer International Publishing.
+
+\bibitem[{Cutler et~al.(2021)Cutler, Dugan, Havaldar, and Stein}]{Cutler2021AutomaticDO}
+Joseph~W. Cutler, Liam Dugan, Shreya Havaldar, and Adam Stein. 2021.
+\newblock \href {https://api.semanticscholar.org/CorpusID:248022852} {Automatic detection of hybrid human-machine text boundaries}.
+
+\bibitem[{Devlin et~al.(2019)Devlin, Chang, Lee, and Toutanova}]{devlin-etal-2019-bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019.
+\newblock \href {https://doi.org/10.18653/v1/N19-1423} {{BERT}: Pre-training of deep bidirectional transformers for language understanding}.
+\newblock In \emph{Proceedings of the 2019 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)}, pages 4171--4186, Minneapolis, Minnesota. Association for Computational Linguistics.
+
+\bibitem[{Dugan et~al.(2022)Dugan, Ippolito, Kirubarajan, Shi, and Callison-Burch}]{dugan2022real}
+Liam Dugan, Daphne Ippolito, Arun Kirubarajan, Sherry Shi, and Chris Callison-Burch. 2022.
+\newblock \href {http://arxiv.org/abs/2212.12672} {Real or fake text?: Investigating human ability to detect boundaries between human-written and machine-generated text}.
+
+\bibitem[{Fr{\"o}hling and Zubiaga(2021)}]{Frhling2021FeaturebasedDO}
+Leon Fr{\"o}hling and Arkaitz Zubiaga. 2021.
+\newblock \href {https://api.semanticscholar.org/CorpusID:233563022} {Feature-based detection of automated language models: tackling gpt-2, gpt-3 and grover}.
+\newblock \emph{PeerJ Computer Science}, 7.
+
+\bibitem[{Gehrmann et~al.(2019)Gehrmann, Strobelt, and Rush}]{gltr}
+Sebastian Gehrmann, Hendrik Strobelt, and Alexander Rush. 2019.
+\newblock \href {https://doi.org/10.18653/v1/P19-3019} {{GLTR}: Statistical detection and visualization of generated text}.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics: System Demonstrations}, pages 111--116, Florence, Italy. Association for Computational Linguistics.
+
+\bibitem[{He et~al.(2021{\natexlab{a}})He, Gao, and Chen}]{he2021debertav3}
+Pengcheng He, Jianfeng Gao, and Weizhu Chen. 2021{\natexlab{a}}.
+\newblock \href {http://arxiv.org/abs/2111.09543} {Debertav3: Improving deberta using electra-style pre-training with gradient-disentangled embedding sharing}.
+
+\bibitem[{He et~al.(2021{\natexlab{b}})He, Liu, Gao, and Chen}]{he2021deberta}
+Pengcheng He, Xiaodong Liu, Jianfeng Gao, and Weizhu Chen. 2021{\natexlab{b}}.
+\newblock \href {http://arxiv.org/abs/2006.03654} {Deberta: Decoding-enhanced bert with disentangled attention}.
+
+\bibitem[{Ippolito et~al.(2020)Ippolito, Duckworth, Callison-Burch, and Eck}]{ippolito-etal-2020-automatic}
+Daphne Ippolito, Daniel Duckworth, Chris Callison-Burch, and Douglas Eck. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.acl-main.164} {Automatic detection of generated text is easiest when humans are fooled}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pages 1808--1822, Online. Association for Computational Linguistics.
+
+\bibitem[{Jawahar et~al.(2020)Jawahar, Abdul-Mageed, and Lakshmanan}]{jawahar-etal-2020-automatic}
+Ganesh Jawahar, Muhammad Abdul-Mageed, and Laks Lakshmanan, V.S. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.coling-main.208} {Automatic detection of machine generated text: A critical survey}.
+\newblock In \emph{Proceedings of the 28th International Conference on Computational Linguistics}, pages 2296--2309, Barcelona, Spain (Online). International Committee on Computational Linguistics.
+
+\bibitem[{Kang et~al.(2018)Kang, Ammar, Dalvi, van Zuylen, Kohlmeier, Hovy, and Schwartz}]{kang-etal-2018-dataset}
+Dongyeop Kang, Waleed Ammar, Bhavana Dalvi, Madeleine van Zuylen, Sebastian Kohlmeier, Eduard Hovy, and Roy Schwartz. 2018.
+\newblock \href {https://doi.org/10.18653/v1/N18-1149} {A dataset of peer reviews ({P}eer{R}ead): Collection, insights and {NLP} applications}.
+\newblock In \emph{Proceedings of the 2018 Conference of the North {A}merican Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)}, pages 1647--1661, New Orleans, Louisiana. Association for Computational Linguistics.
+
+\bibitem[{Koike et~al.(2023)Koike, Kaneko, and Okazaki}]{koike2023outfox}
+Ryuto Koike, Masahiro Kaneko, and Naoaki Okazaki. 2023.
+\newblock \href {https://api.semanticscholar.org/CorpusID:260091573} {Outfox: Llm-generated essay detection through in-context learning with adversarially generated examples}.
+\newblock In \emph{AAAI Conference on Artificial Intelligence}.
+
+\bibitem[{Konovalov et~al.(2016)Konovalov, Melamud, Artstein, and Dagan}]{konovalov2016collecting}
+Vasily Konovalov, Oren Melamud, Ron Artstein, and Ido Dagan. 2016.
+\newblock \href {http://workshop.colips.org/wochat/documents/RP-270.pdf} {Collecting {Better} {Training} {Data} using {Biased} {Agent} {Policies} in {Negotiation} {Dialogues}}.
+\newblock In \emph{Proceedings of {WOCHAT}, the {Second} {Workshop} on {Chatbots} and {Conversational} {Agent} {Technologies}}, Los Angeles. Zerotype.
+
+\bibitem[{Kushnareva et~al.(2023)Kushnareva, Gaintseva, Magai, Barannikov, Abulkhanov, Kuznetsov, Piontkovskaya, and Nikolenko}]{kushnareva2023artificial}
+Laida Kushnareva, Tatiana Gaintseva, German Magai, Serguei Barannikov, Dmitry Abulkhanov, Kristian Kuznetsov, Irina Piontkovskaya, and Sergey Nikolenko. 2023.
+\newblock \href {http://arxiv.org/abs/2311.08349} {Artificial text boundary detection with topological data analysis and sliding window techniques}.
+
+\bibitem[{Liu et~al.(2019)Liu, Ott, Goyal, Du, Joshi, Chen, Levy, Lewis, Zettlemoyer, and Stoyanov}]{roberta}
+Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. 2019.
+\newblock \href {http://arxiv.org/abs/1907.11692} {Roberta: A robustly optimized bert pretraining approach}.
+
+\bibitem[{Ma et~al.(2023)Ma, Liu, Yi, Cheng, Huang, Lu, and Liu}]{ma2023ai}
+Yongqiang Ma, Jiawei Liu, Fan Yi, Qikai Cheng, Yong Huang, Wei Lu, and Xiaozhong Liu. 2023.
+\newblock \href {http://arxiv.org/abs/2301.10416} {Ai vs. human -- differentiation analysis of scientific content generation}.
+
+\bibitem[{Macko et~al.(2023)Macko, Moro, Uchendu, Lucas, Yamashita, Pikuliak, Srba, Le, Lee, Simko, and Bielikova}]{macko-etal-2023-multitude}
+Dominik Macko, Robert Moro, Adaku Uchendu, Jason Lucas, Michiharu Yamashita, Mat{\'u}{\v{s}} Pikuliak, Ivan Srba, Thai Le, Dongwon Lee, Jakub Simko, and Maria Bielikova. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.emnlp-main.616} {{MULTIT}u{DE}: Large-scale multilingual machine-generated text detection benchmark}.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 9960--9987, Singapore. Association for Computational Linguistics.
+
+\bibitem[{Manjavacas et~al.(2017)Manjavacas, De~Gussem, Daelemans, and Kestemont}]{manjavacas-etal-2017-assessing}
+Enrique Manjavacas, Jeroen De~Gussem, Walter Daelemans, and Mike Kestemont. 2017.
+\newblock \href {https://doi.org/10.18653/v1/W17-4914} {Assessing the stylistic properties of neurally generated text in authorship attribution}.
+\newblock In \emph{Proceedings of the Workshop on Stylistic Variation}, pages 116--125, Copenhagen, Denmark. Association for Computational Linguistics.
+
+\bibitem[{Mitchell et~al.(2023)Mitchell, Lee, Khazatsky, Manning, and Finn}]{mitchell2023detectgpt}
+Eric Mitchell, Yoonho Lee, Alexander Khazatsky, Christopher~D. Manning, and Chelsea Finn. 2023.
+\newblock Detectgpt: zero-shot machine-generated text detection using probability curvature.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine Learning}, ICML'23.
+
+\bibitem[{OpenAI(2023)}]{openai2023gpt4}
+OpenAI. 2023.
+\newblock \href {http://arxiv.org/abs/2303.08774} {Gpt-4 technical report}.
+
+\bibitem[{Ostyakova et~al.(2023)Ostyakova, Smilga, Petukhova, Molchanova, and Kornev}]{ostyakova-etal-2023-chatgpt}
+Lidiia Ostyakova, Veronika Smilga, Kseniia Petukhova, Maria Molchanova, and Daniel Kornev. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.sigdial-1.23} {{C}hat{GPT} vs. crowdsourcing vs. experts: Annotating open-domain conversations with speech functions}.
+\newblock In \emph{Proceedings of the 24th Annual Meeting of the Special Interest Group on Discourse and Dialogue}, pages 242--254, Prague, Czechia. Association for Computational Linguistics.
+
+\bibitem[{Reimers and Gurevych(2019)}]{reimers2019sentencebert}
+Nils Reimers and Iryna Gurevych. 2019.
+\newblock \href {https://api.semanticscholar.org/CorpusID:201646309} {Sentence-bert: Sentence embeddings using siamese bert-networks}.
+\newblock In \emph{Conference on Empirical Methods in Natural Language Processing}.
+
+\bibitem[{Solaiman et~al.(2019)Solaiman, Brundage, Clark, Askell, Herbert-Voss, Wu, Radford, Krueger, Kim, Kreps, McCain, Newhouse, Blazakis, McGuffie, and Wang}]{solaiman2019release}
+Irene Solaiman, Miles Brundage, Jack Clark, Amanda Askell, Ariel Herbert-Voss, Jeff Wu, Alec Radford, Gretchen Krueger, Jong~Wook Kim, Sarah Kreps, Miles McCain, Alex Newhouse, Jason Blazakis, Kris McGuffie, and Jasmine Wang. 2019.
+\newblock \href {http://arxiv.org/abs/1908.09203} {Release strategies and the social impacts of language models}.
+
+\bibitem[{Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale, Bikel, Blecher, Ferrer, Chen, Cucurull, Esiobu, Fernandes, Fu, Fu, Fuller, Gao, Goswami, Goyal, Hartshorn, Hosseini, Hou, Inan, Kardas, Kerkez, Khabsa, Kloumann, Korenev, Koura, Lachaux, Lavril, Lee, Liskovich, Lu, Mao, Martinet, Mihaylov, Mishra, Molybog, Nie, Poulton, Reizenstein, Rungta, Saladi, Schelten, Silva, Smith, Subramanian, Tan, Tang, Taylor, Williams, Kuan, Xu, Yan, Zarov, Zhang, Fan, Kambadur, Narang, Rodriguez, Stojnic, Edunov, and Scialom}]{touvron2023llama2}
+Hugo Touvron, Louis Martin, Kevin~R. Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Daniel~M. Bikel, Lukas Blecher, Cristian~Cant{\'o}n Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony~S. Hartshorn, Saghar Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel~M. Kloumann, A.~V. Korenev, Punit~Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan Silva, Eric~Michael Smith, R.~Subramanian, Xia Tan, Binh Tang, Ross Taylor, Adina Williams, Jian~Xiang Kuan, Puxin Xu, Zhengxu Yan, Iliyan Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien Rodriguez, Robert Stojnic, Sergey Edunov, and
+  Thomas Scialom. 2023.
+\newblock \href {https://api.semanticscholar.org/CorpusID:259950998} {Llama 2: Open foundation and fine-tuned chat models}.
+\newblock \emph{ArXiv}, abs/2307.09288.
+
+\bibitem[{Uchendu et~al.(2020)Uchendu, Le, Shu, and Lee}]{uchendu-etal-2020-authorship}
+Adaku Uchendu, Thai Le, Kai Shu, and Dongwon Lee. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-main.673} {Authorship attribution for neural text generation}.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, pages 8384--8395, Online. Association for Computational Linguistics.
+
+\bibitem[{Uchendu et~al.(2021)Uchendu, Ma, Le, Zhang, and Lee}]{uchendu2021turingbench}
+Adaku Uchendu, Zeyu Ma, Thai Le, Rui Zhang, and Dongwon Lee. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.findings-emnlp.172} {{TURINGBENCH}: A benchmark environment for {T}uring test in the age of neural text generation}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2021}, pages 2001--2016, Punta Cana, Dominican Republic. Association for Computational Linguistics.
+
+\bibitem[{Wang et~al.(2023)Wang, Mansurov, Ivanov, Su, Shelmanov, Tsvigun, Whitehouse, Afzal, Mahmoud, Aji, and Nakov}]{wang2023m4}
+Yuxia Wang, Jonibek Mansurov, Petar Ivanov, Jinyan Su, Artem Shelmanov, Akim Tsvigun, Chenxi Whitehouse, Osama~Mohammed Afzal, Tarek Mahmoud, Alham~Fikri Aji, and Preslav Nakov. 2023.
+\newblock \href {http://arxiv.org/abs/2305.14902} {{M4}: Multi-generator, multi-domain, and multi-lingual black-box machine-generated text detection}.
+
+\bibitem[{Wang et~al.(2024)Wang, Mansurov, Ivanov, Su, Shelmanov, Tsvigun, Whitehouse, Afzal, Mahmoud, Puccetti, Arnold, Aji, Habash, Gurevych, and Nakov}]{semeval2024task8}
+Yuxia Wang, Jonibek Mansurov, Petar Ivanov, Jinyan Su, Artem Shelmanov, Akim Tsvigun, Chenxi Whitehouse, Osama~Mohammed Afzal, Tarek Mahmoud, Giovanni Puccetti, Thomas Arnold, Alham~Fikri Aji, Nizar Habash, Iryna Gurevych, and Preslav Nakov. 2024.
+\newblock Semeval-2024 task 8: Multigenerator, multidomain, and multilingual black-box machine-generated text detection.
+\newblock In \emph{Proceedings of the 18th International Workshop on Semantic Evaluation}, SemEval 2024, Mexico, Mexico.
+
+\bibitem[{Yang et~al.(2019)Yang, Dai, Yang, Carbonell, Salakhutdinov, and Le}]{xlnet}
+Zhilin Yang, Zihang Dai, Yiming Yang, Jaime~G. Carbonell, Ruslan Salakhutdinov, and Quoc~V. Le. 2019.
+\newblock \href {https://api.semanticscholar.org/CorpusID:195069387} {Xlnet: Generalized autoregressive pretraining for language understanding}.
+\newblock In \emph{Neural Information Processing Systems}.
+
+\bibitem[{Zellers et~al.(2019)Zellers, Holtzman, Rashkin, Bisk, Farhadi, Roesner, and Choi}]{zellers2020defending}
+Rowan Zellers, Ari Holtzman, Hannah Rashkin, Yonatan Bisk, Ali Farhadi, Franziska Roesner, and Yejin Choi. 2019.
+\newblock \emph{Defending against neural fake news}. Curran Associates Inc., Red Hook, NY, USA.
+
+\bibitem[{Zeng et~al.(2023)Zeng, Sha, Li, Yang, Gašević, and Chen}]{zeng2023automatic}
+Zijie Zeng, Lele Sha, Yuheng Li, Kaixun Yang, Dragan Gašević, and Guanliang Chen. 2023.
+\newblock \href {http://arxiv.org/abs/2307.12267} {Towards automatic boundary detection for human-ai collaborative hybrid essay in education}.
+
+\end{thebibliography}
