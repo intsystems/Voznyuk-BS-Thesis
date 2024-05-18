@@ -66,24 +66,6 @@ Results will be placed into [./results](./results) folder.
 ## Исходный код
 
 
-Пример.
-
-Исходники кода находятся в [./src](./code) .  [main.py](./code/main.py) содержит запуск экспериментов.
-[experiment.py](./code/experiment.py) содержит реализацию шаблона проведения эксперимента.
-Данные сохраняются при помощи [results.py](./code/results.py) для каждого проведённого эксперимента.
-[mathmodel.py](./code/mathmodel.py) cодержит основные компоненты для провдения экспериментов. .
+Исходники кода находятся в [./src](./code).  Файл [main.py](./code/transformer_baseline.py) содержит основной запуск эксперимента, [data_augmentation.py](./code/data_augmentation.py) представляет скрипт для аугментации.
 
 ## Что осталось сделать
-
-TODO Указать, если что-то из задуманного пока не реализованного
-
-Пример.
-
- - [ ] add a sample iPython notebook 
- - [ ] make the template support arbitrary experiment parameters without rewriting [main.py](./src/main.py)
-
-## Как процитировать работу
-
-TODO Указать ссылку на публикацию или arxiv. Если пока нет публикации дать ссылку на этот репозиторий в формате Bibtex
-
-## Лицензия
