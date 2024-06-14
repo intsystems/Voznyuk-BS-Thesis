@@ -1,0 +1,106 @@
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+% \usepackage{cmap}
+\usepackage{url}
+\usepackage {cite}
+ 
+\usepackage{booktabs}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{doi}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\usepackage{amssymb,amsfonts,amsmath,mathtext}
+\usepackage{subfig}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+
+% Algorithms
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+%% Шрифты
+\usepackage{euscript} % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+\usepackage{extsizes}
+
+\usepackage{makecell} % diaghead in a table
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,dsfont}
+\usepackage{icomma}
+
+\usepackage{hyperref}
+% \usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+
+\hypersetup{
+	unicode=true,
+	pdftitle={Детекция машинно-сгенерированных фрагментов на базе анализа смены стиля текста},
+	pdfauthor={Вознюк Анастасия Евгеньевна},
+	pdfkeywords={детекция машинно-сгенерированных текстов},
+	colorlinks=true,
+	linkcolor=black,        % внутренние ссылки
+	citecolor=green,         % на библиографию
+	filecolor=magenta,      % на файлы
+	urlcolor=blue           % на URL
+}
+
+\graphicspath{{./images}}
+
+\usepackage{enumitem} % Для модификаций перечневых окружений
+\usepackage{etoolbox}
+
+\makeatletter
+\expandafter\patchcmd\csname\string\algorithmic\endcsname{\itemsep\z@}{\itemsep=1.5mm}{}{}
+\makeatother
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1.5cm}
+\geometry{top=2.0cm}
+\geometry{bottom=2.0cm}
+\setlength\parindent{5ex}    % Устанавливает длину красной строки 15pt
+\linespread{1.5}             % Коэффициент межстрочного интервала
+\usepackage[center]{titlesec}
+
+\usepackage{icomma}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{bm}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{indentfirst}
+
+% Теоремы
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+\newtheorem*{exercise}{Упражнение}
+\newtheorem*{problem}{Задача}
+
+\newtheorem{definition}{Определение}
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+\newtheorem*{cexample}{Контрпример}
+\newtheorem*{solution}{Решение}
+\DeclareUnicodeCharacter{2061}{}
+
+\renewcommand{\abstractname}{Аннотация}

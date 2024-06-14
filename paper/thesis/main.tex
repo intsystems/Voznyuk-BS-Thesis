@@ -1,0 +1,50 @@
+\documentclass[14pt]{extarticle}
+
+\input{preamble}
+\input{newcommands}
+
+\begin{document}
+
+% %%% Титульный лист
+% \input{sections/title}
+\setcounter{page}{2}
+
+%%% Аннотация
+\newpage
+\input{sections/abstract}
+
+%%% Оглавление
+\newpage
+\tableofcontents
+
+%%% Введение
+\newpage
+\input{sections/introduction}
+
+
+\newpage
+\input{sections/literature}
+
+%%% Основная часть
+\newpage
+\input{sections/section1}
+
+\newpage
+\input{sections/methods}
+
+\newpage
+\input{sections/experiments}
+
+\newpage
+\input{sections/conclusion}
+
+%%% Список литературы
+\newpage
+\bibliographystyle{chicago}
+% 30 ссылок 
+\bibliography{references}
+
+%%% Приложение
+% \newpage
+% \input{sections/appendix}
+\end{document}
